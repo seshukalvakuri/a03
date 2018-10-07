@@ -93,7 +93,7 @@ app.post('/contact', function (req, res) {
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
         console.log('\nERROR: ' + error + '\n')
-        res.json({ msg: 'error sending message' })
+        res.render('contact-error.ejs')
       } else {
         console.log('Sending email...')
         if (info) { console.log('\nres SENT: ' + info.res + '\n') }
@@ -103,6 +103,7 @@ app.post('/contact', function (req, res) {
   }
   catch (e) {
     console.log(e.message)
+    res.render('contact-error.ejs')
   }
 })
 
