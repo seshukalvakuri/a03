@@ -16,6 +16,7 @@ const auth = {
       "domain": "https://app.mailgun.com/app/domains/sandboxf95123c2f3fe4784aca25e1dad912a28.mailgun.org"
   }
 }
+console.log(auth)
 
 // Heroku - force HTTPS
 const enforce = require('express-sslify')
