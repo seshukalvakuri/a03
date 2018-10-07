@@ -3,7 +3,6 @@ const express = require('express')
 const logger = require('morgan')
 const bodyParser = require('body-parser') // simplifies access to request body
 const app = express()  // make express app
-const port = 8081
 const logfile = '/access.log'
 
 // Automatic mailing
@@ -14,6 +13,8 @@ const auth = require('./config.json')
 
 // Heroku - force HTTPS
 const enforce = require('express-sslify')
+
+let port = process.env.PORT || 8081
 
 // ADD THESE COMMENTS AND IMPLEMENTATION HERE 
 // 1 set up the view engine
