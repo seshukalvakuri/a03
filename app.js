@@ -12,6 +12,9 @@ const nodemailer = require('nodemailer')
 const mg = require('nodemailer-mailgun-transport')
 const auth = require('./config.json')
 
+// Heroku - force HTTPS
+const enforce = require('express-sslify')
+
 // ADD THESE COMMENTS AND IMPLEMENTATION HERE 
 // 1 set up the view engine
 // 2 include public assets and use bodyParser
@@ -28,6 +31,7 @@ app.set('view engine', 'ejs') // specify our view engine
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 // 3 log requests to stdout and also
 // log HTTP requests to a file using the standard Apache combined format
