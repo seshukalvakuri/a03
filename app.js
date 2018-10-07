@@ -3,14 +3,14 @@ const express = require('express')
 const logger = require('morgan')
 const bodyParser = require('body-parser') // simplifies access to request body
 const app = express()  // make express app
-const port = 8081
+const port = process.env.PORT || 8081
 const logfile = '/access.log'
+const env = 'dev'
 
 // Automatic mailing
 const fs = require('fs')
 const nodemailer = require('nodemailer')
 const mg = require('nodemailer-mailgun-transport')
-const auth = require('./config.json')
 
 // ADD THESE COMMENTS AND IMPLEMENTATION HERE 
 // 1 set up the view engine
@@ -34,6 +34,14 @@ app.use(bodyParser.json())
 var accessLogStream = fs.createWriteStream(path.join(__dirname, logfile), { flags: 'a' })
 app.use(logger('dev'))
 app.use(logger('combined', { stream: accessLogStream }))
+
+if (env !== 'dev') {
+  app.get('*', function (req, res, next) {
+    if (req.headers['x-forwarded-proto'] != 'https') {
+      res.redirect('https://resumesite563.herokuapp.com/' + req.url)
+    } else { next() }
+  })
+}
 
 // 4 http GET default page at /
 app.get('/', function (req, res) {
@@ -65,29 +73,36 @@ app.post('/contact', function (req, res) {
   const isError = false
 
   // logs to the terminal window (not the browser)
-  console.log('\nCONTACT FORM DATA: ' + name + ' ' + email + ' ' + company + ' ' + comment + '\n')
-
-  // create transporter object capable of sending email using the default SMTP transport
-  const transporter = nodemailer.createTransport(mg(auth))
+  const s = '\nCONTACT FORM DATA: ' + name + ' ' + email + ' ' + company + ' ' + comment + '\n'
+  console.log(s)
 
   const mailOptions = {
     from: 'Denise Case <denisecase@gmail.com>', // sender address
     to: 'dcase@nwmissouri.edu, denisecase@gmail.com', // list of receivers
     subject: 'Message from Website Contact page', // Subject line
-    text: comment,
+    text: s,
     err: isError
   }
 
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log('\nERROR: ' + error + '\n')
-      res.json({ msg: 'error sending message' })
-    } else {
-      console.log('Sending email...')
-      if (info) { console.log('\nres SENT: ' + info.res + '\n') }
-      res.render('contact-confirm.ejs')
-    }
-  })
+  try {
+    const auth = require('./config.json')
+    // create transporter object capable of sending email using the default SMTP transport
+    const transporter = nodemailer.createTransport(mg(auth))
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log('\nERROR: ' + error + '\n')
+        res.json({ msg: 'error sending message' })
+      } else {
+        console.log('Sending email...')
+        if (info) { console.log('\nres SENT: ' + info.res + '\n') }
+        res.render('contact-confirm.ejs')
+      }
+    })
+  }
+  catch (e) {
+    console.log(e.message)
+  }
 })
 
 // 6 this will execute for all unknown URIs not specifically handled
