@@ -5,7 +5,6 @@ const bodyParser = require('body-parser') // simplifies access to request body
 const app = express()  // make express app
 const port = process.env.PORT || 8081
 const logfile = '/access.log'
-const env = 'dev'
 
 // Automatic mailing
 const fs = require('fs')
@@ -19,6 +18,8 @@ const mg = require('nodemailer-mailgun-transport')
 // 4 handle valid GET requests
 // 5 handle valid POST request
 // 6 respond with 404 if a bad URI is requested
+
+console.log(process.env);
 
 // 1 set up the view engine
 app.set('views', path.resolve(__dirname, 'views')) // path to views
@@ -35,8 +36,8 @@ var accessLogStream = fs.createWriteStream(path.join(__dirname, logfile), { flag
 app.use(logger('dev'))
 app.use(logger('combined', { stream: accessLogStream }))
 
-if (env !== 'dev') {
-  app.get('*', function (req, res, next) {
+if (process.env.NODE_ENV === 'production') {
+    app.get('*', function (req, res, next) {
     if (req.headers['x-forwarded-proto'] != 'https') {
       res.redirect('https://resumesite563.herokuapp.com/' + req.url)
     } else { next() }
