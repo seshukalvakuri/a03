@@ -9,14 +9,7 @@ const logfile = '/access.log'
 const fs = require('fs')
 const nodemailer = require('nodemailer')
 const mg = require('nodemailer-mailgun-transport')
-//const auth = require('./config.json')
-const auth = {
-  "auth": {
-      "api_key": "key-b3c15bf08e5f37ff40b3d7fc848d92fc",
-      "domain": "https://app.mailgun.com/app/domains/sandboxf95123c2f3fe4784aca25e1dad912a28.mailgun.org"
-  }
-}
-console.log(auth)
+const auth = require('/config.json')
 
 // Heroku - force HTTPS
 const enforce = require('express-sslify')
