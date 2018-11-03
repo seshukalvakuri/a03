@@ -1,76 +1,33 @@
-# A03 Personal Website 
+# Readme
+Webapps Assignment 1
 
-A simple website using server-side:
+Module 2: Assignment A01
+No unread replies. 1 1 reply.
+Your personal multi-page website
 
-- Node.js platform
-- Express web framework
-- Morgan HTTP request logger
-- Body-Parser to automatically parse HTTP request bodies
-- NodeMailer for emailing contact form information
-- Nodemon for live updates
-- nconf to keep authorization information in a config.json file (not committed to repo)
-- MailGun (10,000 free emails)
+Focus: Client-side HTML, CSS, JavaScript
 
-and client-side:
+Group Size: Typically, 2 developers per group (some groups may have 3). Work together, but each person will create their own content and submit separately.  Be original.  Do not copy and paste from others or reference code on the web. You are encouraged to start with http://www.initializr.com/ (Links to an external site.)Links to an external site.. Do NOT use design templates (you may use Bootstrap). 
 
-- BootStrap framework for responsiveness & styling
-- Initializr from <http://www.initializr.com/>
+Create a new public* repository on GitHub. Under the repository settings, enable GitHub Pages* - this will automatically publish your index.html. 
 
-## Links
-
-- [Code Repository](https://github.com/profcase/a03)
-- [Demo](https://resumesite563.herokuapp.com/)
-
-## Development Tools
-
-- Windows Explorer Context Menu: Add 'Open command window here as administrator'
- <http://www.sevenforums.com/tutorials/47415-open-command-window-here-administrator.html>
-- Visual Studio Code
-
-## Get Started
-
-1. Open a command window in your c:\44563\a03 folder or from VS Code menu, chose View / Integrated Terminal
-2. Install nodemon globally with npm install -g nodemon
-3. Install the dependencies listed in package.json with npm install.
-4. Run nodemon to start the server.  (Hit CTRL-C to stop.)
-
-  ```Powershell
-  > npm install -g nodemon
-  > npm install
-  > nodemon
-  ```
-
-Open browser `http://localhost:8081`.
-
-## Set up Mailgun
-
-1. Sign up for an account at <https://www.mailgun.com>.
-1. Log in.
-1. Go to your dashboard at<https://app.mailgun.com/app/dashboard>.
-1. Scroll down to get your "Domain Name".  
-1. On the right, click the eye to view your private API key.
-1. Create a new config.json from the config.json.example.
-1. Set your domain name and private api key as found above.
-1. Add your private config.json to the .gitignore file.
-
-## Deploy to Heroku Free Hosting
-
-1. Register for a free Heroku account at <https://www.heroku.com/>.
-1. Download and install Heroku CLK <https://devcenter.heroku.com/articles/heroku-cli>.
-1. Log in to your Heroku cloud account.
-1. From your dashboard, click New and add a new project.
-1. Click the new project and click the Deploy tab.
-1. Click 'Open app' to run your app and view the Heroku URL in the browser.
-1. Open a Windows Command Window as Administrator, and run 'heroku login'.
-1. Open Git Bash in your project folder, add the heroku remote (Command 1 below).
-1. In Git Bash, push to your heroku remote (Command 2 below).
-
-```Bash
-git remote add heroku https://git.heroku.com/resumesite563.git
-git push heroku master
-```
-
-## References
-
-Express in Action: Writing, building, and testing Node.js applications
-by Evan M, <https://www.manning.com/books/express-in-action>
+Create a new folder (this will be the name of your repository). 
+In this folder, create your personal website. Use the work that you have done in M01 and W01 and incorporate it into this new site. Use index.html for your opening page and add a css file for your style.
+Include your profile photo (use img-circle to display it in a circle).
+Include a second image - for example, as the background if you like. 
+Include an an embedded video (e.g. a YouTube tutorial or NWMissouri video).
+Use at least 15 different HTML tags, (e.g., html, head, body, title, br, p, a, div, span, ul, ol, li, img, link, form, input, button, header, footer, etc.)
+Add at least 6 CSS selectors, 2 that style by element, 2 by id, and 2 by class. (More is fine.)
+Include at least 3 pages: Home (index.html) / YourChoice (maybe the Tic-Tac-Toe game?) / Contact.
+Use a nicely styled Navbar (https://getbootstrap.com/docs/4.0/components/navbar/ (Links to an external site.)Links to an external site.) - use Bootstrap or build your own from scratch. 
+On your second page YourChoice, in a later assignment, you will use JavaScript to calculate something in response to user inputs. Suggestions include an online order form price calculation, calculation of the number of days since a user-provided date, calculation of the day of the week a user-entered date took place. The best ideas are ones you would actually use. Your idea should be unique - using similar calculations will result in a 10% score reduction (and as always, highly similar code may trigger an academic integrity violation). Draft your idea and a user input form here, but you don't have to make it work yet.  Later, you will calculate and display result(s) on your YourChoice page. 
+On page 3, draft a contact form so users can say hello or ask you a question. (Again - it doesn't have to work yet.)
+Include links to your GitHub site, your BitBucket site, your LinkedIn account, and, if you wish, your Facebook or other social accounts. You can find official icons and images online.
+Add a simple README.md file or README.txt to your folder (see GitHub public repos for examples).
+Work with your partner, but submit separately. Your work must be creative - your pages must not be the same format or style as any other submission except your group partner, if you like. Test each other's website before finalizing your submissions. 
+Validate your markup with https://validator.w3.org/#validate_by_input (Links to an external site.)Links to an external site..
+Title your post "NN Lastname, Firstname(s) - success" if successful, title your post "Lastname, Firstname" if you have questions.  List the ID and name for each of your group members in each of your submissions. Display all 3 of your pages in your submission.
+Include a link to your repository with your submission. (If private, be sure to add your instructor and course assistants to the repo.) 
+Approximately how long did the overall assignment take? 
+Did you encounter any challenges? 
+* If confidentiality is required, you can use a fake name and gmail address. 
